@@ -25,6 +25,7 @@ function init() {
   });
 
   L.tileLayer("/map/{z}/{x}/{y}.png", {
+    noWrap: true,
     maxZoom: 3,
   }).addTo(map);
 
