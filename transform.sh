@@ -1,16 +1,32 @@
 #!/usr/bin/env bash
+# 
+# This script is for transforming image to tiles. 
+# Currently the app assumes the image size is 1024x1024. 
+# If a different size is preferred, 
+# update `width` and `height` variables in `src/main.js`
+#
+# Example: 
+# ./transform.sh images/treasure-map.jpg 0-3
+#
 
-# get the tool
-test ! -f gdal2tiles.py \
-  && curl https://raw.githubusercontent.com/commenthol/gdal2tiles-leaflet/master/gdal2tiles.py \
-  > gdal2tiles.py \
-  && echo "'python-gdal' library required - please install"
 
+check_arg() {
+  local arg_value="$1"
+  local arg_name="$2" # For better error messages, pass the expected name
 
-# The following script produces invalid tiles on leaflet
-# gdal2tiles.py -p raster -z 0-3 -w leaflet treasure-map.jpg output/
+  if [ -z "$arg_value" ]; then
+    echo "Error: Missing required argument: '$arg_name'" >&2
+    exit 1
+  fi
+}
+
+# Check for the first argument ($1)
+check_arg "$1" "<path to image>"
+
+# Check for the second argument ($2)
+check_arg "$2" "<zoom range (ex. 0-3)>"
 
 rm -rf public/map
 export GDAL_ALLOW_LARGE_LIBJPEG_MEM_ALLOC=1
-python ./gdal2tiles.py -l -p raster -z 0-3 -w none images/treasure-map.jpg public/map
+gdal2tiles.py --xyz -p raster -z 0-3 -w leaflet $1 public/map/
 
