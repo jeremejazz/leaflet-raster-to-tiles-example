@@ -26,7 +26,7 @@ function init() {
 
   L.tileLayer("/map/{z}/{x}/{y}.png", {
     noWrap: true,
-    maxZoom: 3,
+    maxZoom: 2,
   }).addTo(map);
 
   const rc = new L.RasterCoords(map, imageDimensions);
@@ -44,7 +44,7 @@ function init() {
     shadowSize: [41, 41],
   });
 
-  L.marker(rc.unproject([408, 504]), { icon }).addTo(map);
+  L.marker(rc.unproject([611, 433]), { icon }).addTo(map);
 }
 
 init();
