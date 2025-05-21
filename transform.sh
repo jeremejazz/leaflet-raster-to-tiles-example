@@ -28,5 +28,5 @@ check_arg "$2" "<zoom range (ex. 0-3)>"
 
 rm -rf public/map
 export GDAL_ALLOW_LARGE_LIBJPEG_MEM_ALLOC=1
-gdal2tiles.py --xyz -p raster -z 0-3 -w leaflet $1 public/map/
+gdal2tiles.py --xyz -p raster -z $2 -w leaflet $1 public/map/
 
