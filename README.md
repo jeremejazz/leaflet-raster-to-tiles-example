@@ -1,8 +1,8 @@
 # Leaflet Raster to Tiles Example
 
-This is an sample code for using a large image as a map tile in leaflet.
+This is a sample code for using a large image as a map tile in Leaflet.
 
-For an in-depth tutorial in how to make this, check out this [blog post](https://jereme.me/post/custom-image-map-leaflet/).
+For an in-depth tutorial on how to make this, check out this [blog post](https://jereme.me/post/custom-image-map-leaflet/).
 
 ![Preview](screenshots/preview.png)
 
